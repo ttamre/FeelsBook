@@ -1,3 +1,6 @@
+// TODO Edit .gitignore to include APK (just re-read the assignment spec)
+
+
 package ttamre.ca.ttamre_feelsbook;
 
 import android.support.v7.app.AppCompatActivity;
