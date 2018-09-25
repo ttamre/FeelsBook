@@ -1,4 +1,5 @@
 // TODO Edit .gitignore to include APK (just re-read the assignment spec)
+// TODO Read the assignment discussion forums
 
 
 package ttamre.ca.ttamre_feelsbook;

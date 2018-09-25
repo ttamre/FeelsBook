@@ -11,7 +11,7 @@ public class Feeling {
     /**
      * Constructor for the Feeling class
      *
-     * the code for setting the timestamp was taken from StackOverflow, from user @JeffJack
+     * the code for setting the timestamp was taken from StackOverflow, from user JeffJack
      *      https://stackoverflow.com/users/149923/jeffjak
      *      https://stackoverflow.com/a/20333576
      *

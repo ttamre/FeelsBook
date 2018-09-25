@@ -1,8 +1,6 @@
 package ttamre.ca.ttamre_feelsbook;
 
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -18,6 +16,15 @@ public class FeelingList extends ArrayList{
         feelingList = new ArrayList<>();
     }
 
+
+    public Feeling getFeeling(int index) {
+        if(index > feelingList.size()) {
+            System.out.println("FeelingList.java -> getFeeling(): Index out of bounds");
+        }
+        return feelingList.get(index);
+    }
+
+
     /**
      * Adds a feeling to the feelingList
      *
@@ -26,6 +33,7 @@ public class FeelingList extends ArrayList{
     public void addFeeling(Feeling feeling) {
         feelingList.add(feeling);
     }
+
 
     /**
      * Edit the comment of an existing feeling if it exists in feelingList
@@ -41,6 +49,7 @@ public class FeelingList extends ArrayList{
         }
     }
 
+
     /**
      * Removes a feeling if it exits in feelingList
      * @param feeling the feeling to remove from the list
@@ -53,46 +62,55 @@ public class FeelingList extends ArrayList{
         }
     }
 
+
     /**
      * Getter method to get the feelingList
      * @return feelingList: Collection<Feeling>
      */
-    public Collection<Feeling> getFeelingList() {
+    public ArrayList<Feeling> getFeelingList() {
         return feelingList;
     }
+
 
     /**
      * Counts the occurences of each feeling in feelingList and returns a Map of the feelings and
      *  their occurences. Uses the name of the feelings to distinguish each feeling,
      *  not the objects themselves.
      *
-     * @return counts
+     *  The code used to update the counts was taken from JavaConceptOfTheDay, from user pramodbablad
+     *      https://javaconceptoftheday.com/author/pramodbablad/
+     *      https://javaconceptoftheday.com/count-occurrences-of-each-element-in-an-array/
+     *
+     * @return Occurrence count of the format {feelingName: String, count: Integer}
      */
     public Map<String, Integer> getFeelingCount() {
         Map<String, Integer> counts = new HashMap<>();
 
-        for (int i = 0; i < feelingList.size(); i++) {
-            String name = feelingList.get(i).getName();
+        for (Feeling feeling: feelingList) {
+            String name = feeling.getName();
 
-            if (!counts.keySet().contains(name)) {
-                int occurences = Collections.frequency(feelingList, name);
-                counts.put(name, occurences);
+            if (counts.keySet().contains(name)) {
+                counts.put(name, counts.get(name) + 1);
+            } else {
+                counts.put(name, 1);
             }
         }
 
         return counts;
     }
 
+
     /**
-     * Override of the arrayList.size method
+     * Override of the arrayList.size() method
      * @return the size of feelingList: int
      */
     public int size() {
         return feelingList.size();
     }
 
+
     /**
-     * Override of the arrayList.contains method
+     * Override of the arrayList.contains() method
      * @param feeling the feeling to be checked
      * @return true if the feeling is in feelingList, false otherwise
      */
