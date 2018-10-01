@@ -16,6 +16,20 @@ public class Feeling {
      *      https://stackoverflow.com/a/20333576
      *
      * @param feelingName name or category of the feeling
+     */
+    public Feeling(String feelingName) {
+        name = feelingName;
+        timestamp = Calendar.getInstance().getTime();
+    }
+
+    /**
+     * Constructor for the Feeling class
+     *
+     * the code for setting the timestamp was taken from StackOverflow, from user JeffJack
+     *      https://stackoverflow.com/users/149923/jeffjak
+     *      https://stackoverflow.com/a/20333576
+     *
+     * @param feelingName name or category of the feeling
      * @param newComment the comment to be added to the feeling
      */
     public Feeling(String feelingName, String newComment) {
