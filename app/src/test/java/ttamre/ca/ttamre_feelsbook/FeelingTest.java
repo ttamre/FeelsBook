@@ -4,19 +4,24 @@ import junit.framework.TestCase;
 
 import org.junit.Test;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
+import java.util.Locale;
 
 public class FeelingTest extends TestCase {
     @Test
     public void testCreate() {
-        String feelingName = "Joy";
-        String feelingComment = "I finished some unit tests today!";
+        String nameA = "Joy";
+        String nameB = "Sadness";
+        String commentA = "I finished some unit tests today!";
 
-        Feeling feeling = new Feeling(feelingName, feelingComment);
+        Feeling feelingA = new Feeling(nameA, commentA);
+        Feeling feelingB = new Feeling(nameB);
 
-        assertTrue("AssertionError: feeling.getName()", feeling.getName().equals(feelingName));
-        assertTrue("AssertionError: feeling.getComment()", feeling.getComment().equals(feelingComment));
-        System.out.println(feeling.getDate());
+        assertTrue("AssertionError: feeling.getName()", feelingA.getName().equals(nameA));
+        assertTrue("AssertionError: feeling.getName()", feelingB.getName().equals(nameB));
+        assertTrue("AssertionError: feeling.getComment()", feelingA.getComment().equals(commentA));
     }
 
     @Test
@@ -35,12 +40,13 @@ public class FeelingTest extends TestCase {
     @Test
     public void testEditDate() {
         String feelingName = "Joy";
-        Feeling feeling = new Feeling(feelingName);
+        String comment = "testEditDate() A";
+        Feeling feeling = new Feeling(feelingName, comment);
         assertTrue("AssertionError: feeling.getName()", feeling.getName().equals(feelingName));
 
-        Date newDate = new Date();
+        Date newDate = new Date(118, 8, 1, 18, 30, 0);
         feeling.setDate(newDate);
-        assertTrue("AssertionError: feeling.getDate()", feeling.getDate().equals(newDate));
+        assertTrue("AssertionError: feeling.getDate(), Date", feeling.getDate().equals(newDate));
     }
 
 }

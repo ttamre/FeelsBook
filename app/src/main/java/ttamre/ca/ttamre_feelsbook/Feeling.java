@@ -1,7 +1,9 @@
 package ttamre.ca.ttamre_feelsbook;
 
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Locale;
 
 public class Feeling {
     protected String name;
@@ -11,9 +13,8 @@ public class Feeling {
     /**
      * Constructor for the Feeling class
      *
-     * the code for setting the date was taken from StackOverflow, from user JeffJack
-     *      https://stackoverflow.com/users/149923/jeffjak
-     *      https://stackoverflow.com/a/20333576
+     * The code for setting the date in iso8601 was taken from Mincong Huang's blog
+     *      https://mincong-h.github.io/2017/02/16/convert-date-to-string-in-java/
      *
      * @param feelingName name or category of the feeling
      */
@@ -47,18 +48,15 @@ public class Feeling {
     }
 
     /**
-     * Getter method to return the date/date that the class was instantiated on
-     * @return date: Date
+     * Getter method to return the date (in iso8601) that the class was instantiated on
+     * @return date: String
      */
     public Date getDate() {
         return date;
     }
 
     /**
-     * Getter method to return the comment for the feeling
-     * Since comments are optional, feelings with no comment will have a comment value of
-     *      <String> "" </String>
-     *
+     * Getter method to return the comment for the feelings
      * @return comment: String
      */
     public String getComment() {
@@ -73,11 +71,21 @@ public class Feeling {
         comment = newComment;
     }
 
+
     /**
      * Setter method to edit the date of an existing date
      * @param newDate the new date that will replace the existing one
      */
     public void setDate(Date newDate) {
         date = newDate;
+    }
+
+    public String toString() {
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss", Locale.CANADA);
+        if (comment != null) {
+            return String.format("%s: %s (%s)", sdf.format(date), name, comment);
+        } else {
+            return String.format("%s: %s", sdf.format(date), name);
+        }
     }
 }

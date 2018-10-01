@@ -2,9 +2,8 @@
 
 ### References
 #### Feeling.java
-The code for setting the timestamp was taken from StackOverflow, from user JeffJack
-* https://stackoverflow.com/users/149923/jeffjak
-* https://stackoverflow.com/a/20333576
+The code for setting the date in iso8601 was taken from Mincong Huang's blog
+* https://mincong-h.github.io/2017/02/16/convert-date-to-string-in-java/
      
 
 #### FeelingList.java

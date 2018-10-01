@@ -93,10 +93,12 @@
         android:id="@+id/viewCountsButton"
         android:layout_width="180dp"
         android:layout_height="80dp"
+        android:layout_marginBottom="32dp"
         android:layout_marginLeft="16dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="64dp"
         android:text="@string/ViewCounts"
+        app:layout_constraintBottom_toTopOf="@+id/footerTextView"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/sadnessButton" />
 

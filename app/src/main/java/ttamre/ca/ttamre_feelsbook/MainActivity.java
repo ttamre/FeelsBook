@@ -1,19 +1,23 @@
 /**
  *  TODO Monday
- *      - Change the date in feeling to the proper iso8601 format
  *      - Build the rest of the UI
  *
  *  TODO Tuesday
  *      - Finish basic functionality (file saving is last priority)
- *      - Run tests on Macbook
+ *      - Run tests
  *
  *  TODO Wednesday
  *      - Run any tests and fix any bugs that still exist
  *      - Test build on lab machines
+ *      - Update UML, README, and any other docs
  *
  *  TODO Thursday
  *      - Record video of the app running (read spec before recording)
  *      - Submit assignment (read spec and forums before recording)
+ *
+ *  NOTE
+ *      - Date will be converted to iso8601 when it is about to be rendered, not when instantiated
+ *          * this allows for date methods to be used (comparisons, etc) *
  */
 
 

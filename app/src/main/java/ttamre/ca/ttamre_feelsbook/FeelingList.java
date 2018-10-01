@@ -1,5 +1,8 @@
 package ttamre.ca.ttamre_feelsbook;
 
+import android.content.res.Resources;
+import android.util.Log;
+
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
@@ -7,7 +10,7 @@ import java.util.Map;
 
 public class FeelingList extends ArrayList{
 
-    protected ArrayList<Feeling> feelingList = null;
+    protected ArrayList<Feeling> feelingList;
 
     /**
      * Constructor method for the FeelingList class
@@ -27,7 +30,7 @@ public class FeelingList extends ArrayList{
         try {
             return feelingList.get(index);
         } catch (IndexOutOfBoundsException e) {
-            e.printStackTrace();
+            Log.d("IndexOutOfBounds", "", e);
             return getFeeling(0);
         }
     }
@@ -39,7 +42,6 @@ public class FeelingList extends ArrayList{
      */
     public void addFeeling(Feeling feeling) {
         feelingList.add(feeling);
-        System.out.println("Added " + feeling.toString() + " to feelingList");
     }
 
 
@@ -49,10 +51,10 @@ public class FeelingList extends ArrayList{
      * @param newComment the comment that will replace the old comment
      */
     public void editFeeling(Feeling feeling, String newComment) {
-        if (feelingList.contains(feeling)) {
+        try {
             feeling.setComment(newComment);
-        } else {
-            System.out.println("FeelingList.java -> editFeeling(): Feeling not in FeelingList");
+        } catch(Resources.NotFoundException e) {
+            Log.d("NotFound","FeelingList.java -> editFeeling(): Feeling not in FeelingList", e);
         }
     }
 
@@ -62,23 +64,22 @@ public class FeelingList extends ArrayList{
      * @param newDate the date that will replace the old date
      */
     public void editFeeling(Feeling feeling, Date newDate) {
-        if (feelingList.contains(feeling)) {
+        try {
             feeling.setDate(newDate);
-        } else {
-            System.out.println("FeelingList.java -> editFeeling(): Feeling not in FeelingList");
+        } catch (Resources.NotFoundException e) {
+            Log.d("NotFound", "FeelingList.java -> editFeeling(): Feeling not in FeelingList", e);
         }
     }
-
 
     /**
      * Removes a feeling if it exits in feelingList
      * @param feeling the feeling to remove from the list
      */
     public void removeFeeling(Feeling feeling) {
-        if (feelingList.contains(feeling)) {
+        try {
             feelingList.remove(feeling);
-        } else {
-            System.out.println("FeelingList.java -> removeFeeling(): Feeling not in FeelingList");
+        } catch (Resources.NotFoundException e) {
+            Log.d("NotFound", "FeelingList.java -> removeFeeling(): Feeling not in FeelingList", e);
         }
     }
 

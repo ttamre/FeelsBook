@@ -67,10 +67,10 @@ public class FeelingListTest extends TestCase {
         String newCommentB = "newCommentB";
 
         Date newDateA = new Date();
-        try { Thread.sleep(2000); } catch (InterruptedException e) { Thread.currentThread().interrupt();}
-        Date newDateB = new Date();
-
+        Date newDateB = new Date(118, 8, 1, 18, 30, 0);
         FeelingList feelingList = new FeelingList();
+        System.out.println(newDateA);
+        System.out.println(newDateB);
 
         /* Operate on feelingList */
         feelingList.addFeeling(feelingA);
@@ -81,13 +81,16 @@ public class FeelingListTest extends TestCase {
         feelingList.editFeeling(feelingA, newDateA);
         feelingList.editFeeling(feelingB, newDateB);
 
-        Feeling a = feelingList.getFeeling(0);
-        assertEquals("AssertionError: feelingList.editFeeling, A comment", a.getComment(), newCommentA);
-        assertEquals("AssertionError: feelingList.editFeeling, A date", a.getDate(), newDateA);
+        Feeling feelingC = feelingList.getFeeling(0);
+        assertEquals("AssertionError: feelingList.editFeeling, A comment", feelingC.getComment(), newCommentA);
+        assertEquals("AssertionError: feelingList.editFeeling, A date", feelingC.getDate(), newDateA);
 
-        Feeling b = feelingList.getFeeling(1);
-        assertEquals("AssertionError: feelingList.editFeeling, B comment", b.getComment(), newCommentB);
-        assertEquals("AssertionError: feelingList.editFeeling, B date", b.getDate(), newDateB);
+        Feeling feelingD = feelingList.getFeeling(1);
+        assertEquals("AssertionError: feelingList.editFeeling, B comment", feelingD.getComment(), newCommentB);
+        assertEquals("AssertionError: feelingList.editFeeling, B date", feelingD.getDate(), newDateB);
+
+        System.out.println(feelingC);
+        System.out.println(feelingD);
     }
 
     /**
