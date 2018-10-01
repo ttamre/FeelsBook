@@ -1,12 +1,19 @@
 /**
- * TODO
- *  2) Change the date in feeling to the proper iso8601 format
- *  3) Re-design app UI so the user can record a feeling with only 1 click (remove screen 1 and 3)
- *  4) Build the UI for the app
- *  5) Add file saving
- *  6) Testing and bug fixes
- *  7) Record video of the app running (read the spec again before recording)
- *  8) Make sure the submission is exactly as the spec says it should be
+ *  TODO Monday
+ *      - Change the date in feeling to the proper iso8601 format
+ *      - Build the rest of the UI
+ *
+ *  TODO Tuesday
+ *      - Finish basic functionality (file saving is last priority)
+ *      - Run tests on Macbook
+ *
+ *  TODO Wednesday
+ *      - Run any tests and fix any bugs that still exist
+ *      - Test build on lab machines
+ *
+ *  TODO Thursday
+ *      - Record video of the app running (read spec before recording)
+ *      - Submit assignment (read spec and forums before recording)
  */
 
 
@@ -17,7 +24,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-
 import java.util.Date;
 
 public class MainActivity extends AppCompatActivity {
