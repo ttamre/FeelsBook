@@ -5,13 +5,13 @@ import java.util.Date;
 
 public class Feeling {
     protected String name;
-    protected final Date timestamp;
+    protected Date date;
     protected String comment;
 
     /**
      * Constructor for the Feeling class
      *
-     * the code for setting the timestamp was taken from StackOverflow, from user JeffJack
+     * the code for setting the date was taken from StackOverflow, from user JeffJack
      *      https://stackoverflow.com/users/149923/jeffjak
      *      https://stackoverflow.com/a/20333576
      *
@@ -19,13 +19,13 @@ public class Feeling {
      */
     public Feeling(String feelingName) {
         name = feelingName;
-        timestamp = Calendar.getInstance().getTime();
+        date = Calendar.getInstance().getTime();
     }
 
     /**
      * Constructor for the Feeling class
      *
-     * the code for setting the timestamp was taken from StackOverflow, from user JeffJack
+     * the code for setting the date was taken from StackOverflow, from user JeffJack
      *      https://stackoverflow.com/users/149923/jeffjak
      *      https://stackoverflow.com/a/20333576
      *
@@ -35,7 +35,7 @@ public class Feeling {
     public Feeling(String feelingName, String newComment) {
         name = feelingName;
         comment = newComment;
-        timestamp = Calendar.getInstance().getTime();
+        date = Calendar.getInstance().getTime();
     }
 
     /**
@@ -43,15 +43,15 @@ public class Feeling {
      * @return name: String
      */
     public String getName() {
-        return this.name;
+        return name;
     }
 
     /**
-     * Getter method to return the date/timestamp that the class was instantiated on
-     * @return timestamp: Date
+     * Getter method to return the date/date that the class was instantiated on
+     * @return date: Date
      */
-    public Date getTimestamp() {
-        return this.timestamp;
+    public Date getDate() {
+        return date;
     }
 
     /**
@@ -62,7 +62,7 @@ public class Feeling {
      * @return comment: String
      */
     public String getComment() {
-        return this.comment;
+        return comment;
     }
 
     /**
@@ -71,5 +71,13 @@ public class Feeling {
      */
     public void setComment(String newComment) {
         comment = newComment;
+    }
+
+    /**
+     * Setter method to edit the date of an existing date
+     * @param newDate the new date that will replace the existing one
+     */
+    public void setDate(Date newDate) {
+        date = newDate;
     }
 }

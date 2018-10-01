@@ -3,6 +3,7 @@ package ttamre.ca.ttamre_feelsbook;
 import junit.framework.TestCase;
 import org.junit.Test;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Map;
 
 public class FeelingListTest extends TestCase {
@@ -30,11 +31,6 @@ public class FeelingListTest extends TestCase {
         feelingList.addFeeling(feelingA);
         feelingList.addFeeling(feelingB);
 
-        System.out.println(feelingList.getFeeling(0));
-        System.out.println(feelingA);
-        System.out.println(feelingList.getFeeling(1));
-        System.out.println(feelingB);
-
         assertEquals("AssertionError: feelingList.getFeeling(), A", feelingList.getFeeling(0), feelingA);
         assertEquals("AssertionError: feelingList.getFeeling(), B", feelingList.getFeeling(1), feelingB);
     }
@@ -59,27 +55,39 @@ public class FeelingListTest extends TestCase {
 
     /**
      * Tests the editing of feelings in the feelingList
-     * Assertions fail if the comment isn't equal to the new comment that was edited in
+     * Assertions fail if the comment/date isn't equal to the new comment/date that was edited in
      */
     @Test
     public void testEditFeeling() {
+        /* Initialize all variables to be used */
         Feeling feelingA = new Feeling("FeelingA", "CommentA");
         Feeling feelingB = new Feeling("FeelingB", "CommentB");
+
         String newCommentA = "newCommentA";
         String newCommentB = "newCommentB";
 
+        Date newDateA = new Date();
+        try { Thread.sleep(2000); } catch (InterruptedException e) { Thread.currentThread().interrupt();}
+        Date newDateB = new Date();
+
         FeelingList feelingList = new FeelingList();
+
+        /* Operate on feelingList */
         feelingList.addFeeling(feelingA);
         feelingList.addFeeling(feelingB);
 
         feelingList.editFeeling(feelingA, newCommentA);
         feelingList.editFeeling(feelingB, newCommentB);
+        feelingList.editFeeling(feelingA, newDateA);
+        feelingList.editFeeling(feelingB, newDateB);
 
         Feeling a = feelingList.getFeeling(0);
-        assertEquals("AssertionError: feelingList.editFeeling, A", a.getComment(), newCommentA);
+        assertEquals("AssertionError: feelingList.editFeeling, A comment", a.getComment(), newCommentA);
+        assertEquals("AssertionError: feelingList.editFeeling, A date", a.getDate(), newDateA);
 
         Feeling b = feelingList.getFeeling(1);
-        assertEquals("AssertionError: feelingList.editFeeling, B", b.getComment(), newCommentB);
+        assertEquals("AssertionError: feelingList.editFeeling, B comment", b.getComment(), newCommentB);
+        assertEquals("AssertionError: feelingList.editFeeling, B date", b.getDate(), newDateB);
     }
 
     /**

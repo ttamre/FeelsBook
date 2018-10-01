@@ -1,3 +1,14 @@
 <resources>
     <string name="app_name">ttamre-FeelsBook</string>
+    <string name="AppTitle">ttamre-FeelsBook</string>
+    <string name="AuthorInfo">ttamre</string>
+    <string name="ViewCounts">View Counts</string>
+    <string name="ViewHistory">View History</string>
+    <string name="RecordEmotions">Record Emotions</string>
+    <string name="Love">Love</string>
+    <string name="Joy">Joy</string>
+    <string name="Surprise">Surprise</string>
+    <string name="Anger">Anger</string>
+    <string name="Fear">Fear</string>
+    <string name="Sadness">Sadness</string>
 </resources>

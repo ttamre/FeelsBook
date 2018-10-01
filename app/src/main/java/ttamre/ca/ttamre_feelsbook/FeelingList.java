@@ -1,49 +1,69 @@
 package ttamre.ca.ttamre_feelsbook;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
 public class FeelingList extends ArrayList{
 
-    protected ArrayList<Feeling> feelingList;
+    protected ArrayList<Feeling> feelingList = null;
 
     /**
      * Constructor method for the FeelingList class
      * Instantiates a new ArrayList to be used for storing all of our feelings
      */
     public FeelingList() {
-        feelingList = new ArrayList<>();
+       feelingList = new ArrayList<>();
     }
 
 
+    /**
+     * Returns the feeling at a given index
+     * @param index the index of the feeling to retrieve
+     * @return the Feeling at the given index
+     */
     public Feeling getFeeling(int index) {
-        if(index > feelingList.size()) {
-            System.out.println("FeelingList.java -> getFeeling(): Index out of bounds");
+        try {
+            return feelingList.get(index);
+        } catch (IndexOutOfBoundsException e) {
+            e.printStackTrace();
+            return getFeeling(0);
         }
-        return feelingList.get(index);
     }
 
 
     /**
      * Adds a feeling to the feelingList
-     *
      * @param feeling the feeling to be added
      */
     public void addFeeling(Feeling feeling) {
         feelingList.add(feeling);
+        System.out.println("Added " + feeling.toString() + " to feelingList");
     }
 
 
     /**
      * Edit the comment of an existing feeling if it exists in feelingList
-     *
      * @param feeling the feeling to be edited
      * @param newComment the comment that will replace the old comment
      */
     public void editFeeling(Feeling feeling, String newComment) {
         if (feelingList.contains(feeling)) {
             feeling.setComment(newComment);
+        } else {
+            System.out.println("FeelingList.java -> editFeeling(): Feeling not in FeelingList");
+        }
+    }
+
+    /**
+     * Edit the date of an existing feeling if it exists in feelingList
+     * @param feeling the feeling to be edited
+     * @param newDate the date that will replace the old date
+     */
+    public void editFeeling(Feeling feeling, Date newDate) {
+        if (feelingList.contains(feeling)) {
+            feeling.setDate(newDate);
         } else {
             System.out.println("FeelingList.java -> editFeeling(): Feeling not in FeelingList");
         }
@@ -73,8 +93,8 @@ public class FeelingList extends ArrayList{
 
 
     /**
-     * Counts the occurences of each feeling in feelingList and returns a Map of the feelings and
-     *  their occurences. Uses the name of the feelings to distinguish each feeling,
+     * Counts the occurrences of each feeling in feelingList and returns a Map of the feelings and
+     *  their occurrences. Uses the name of the feelings to distinguish each feeling,
      *  not the objects themselves.
      *
      *  The code used to update the counts was taken from JavaConceptOfTheDay, from user pramodbablad
