@@ -45,7 +45,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/footerTextView"
+        android:id="@+id/footerTextViewMain"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
@@ -98,7 +98,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="64dp"
         android:text="@string/ViewCounts"
-        app:layout_constraintBottom_toTopOf="@+id/footerTextView"
+        app:layout_constraintBottom_toTopOf="@+id/footerTextViewMain"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/sadnessButton" />
 

@@ -1,20 +1,27 @@
 # ttamre-Feelsbook
 
-### References
+## References
 #### Feeling.java
-The code for setting the date in iso8601 was taken from Mincong Huang's blog
+Code for setting the date in iso8601 was taken from Mincong Huang's blog
 * https://mincong-h.github.io/2017/02/16/convert-date-to-string-in-java/
      
 
 #### FeelingList.java
-The code used to update the counts was taken from JavaConceptOfTheDay, from user pramodbablad
+Code used to update the counts was taken from JavaConceptOfTheDay, from user pramodbablad
 * https://javaconceptoftheday.com/author/pramodbablad/
 * https://javaconceptoftheday.com/count-occurrences-of-each-element-in-an-array/
      
 
 #### MainActivity.java
 
-The code for moving between activities was taken from StackOverflow, from users "Gilad Haimov" and "Dominik"
-* https://stackoverflow.com/users/605111/gilad-haimov
-* https://stackoverflow.com/users/4443105/dominik
-* https://stackoverflow.com/a/24610673
+Code used to set a master OnClickListener was taken from StackOverflow, from user "Nguyen Minh Binh"
+* https://stackoverflow.com/users/523325/nguyen-minh-binh
+* https://stackoverflow.com/a/9989541
+
+#### ViewHistoryActivity.java
+Code taken from the android developer RecyclerView guide
+* https://developer.android.com/guide/topics/ui/layout/recyclerview
+
+#### FeelingListAdapter.java
+Source code was taken from the RecyclerView guide on the android developer website
+* https://developer.android.com/guide/topics/ui/layout/recyclerview

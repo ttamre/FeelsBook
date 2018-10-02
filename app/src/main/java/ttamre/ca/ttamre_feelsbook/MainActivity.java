@@ -1,17 +1,16 @@
 /**
  *  TODO Monday
- *      - Build the rest of the UI
- *
+ *      - All of ViewHistory
+ *          1) Get recycler to update properly
+ *          2) Add ability to tap to edit
+ *          3) Add ability to swipe to delete
  *  TODO Tuesday
- *      - Finish basic functionality (file saving is last priority)
- *      - Run tests
+ *      - All of ViewCounts
+ *      - Run any tests and fix any bugs that still exist
  *
  *  TODO Wednesday
- *      - Run any tests and fix any bugs that still exist
- *      - Test build on lab machines
  *      - Update UML, README, and any other docs
- *
- *  TODO Thursday
+ *      - Test build on lab machines
  *      - Record video of the app running (read spec before recording)
  *      - Submit assignment (read spec and forums before recording)
  *
@@ -24,107 +23,67 @@
 package ttamre.ca.ttamre_feelsbook;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
-import java.util.Date;
 
 public class MainActivity extends AppCompatActivity {
-
+    public static final FeelingList feelingList = new FeelingList();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        final FeelingList feelingList = new FeelingList();
-
+        /* Create all the Button objects */
         Button loveButton = findViewById(R.id.loveButton);
         Button joyButton = findViewById(R.id.joyButton);
         Button surpriseButton = findViewById(R.id.surpriseButton);
         Button angerButton = findViewById(R.id.angerButton);
         Button sadnessButton = findViewById(R.id.sadnessButton);
         Button fearButton = findViewById(R.id.fearButton);
-
         Button viewCountsButton = findViewById(R.id.viewCountsButton);
         Button viewHistoryButton = findViewById(R.id.viewHistoryButton);
 
-
-
-        loveButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                feelingList.addFeeling(new Feeling("Love"));
-            }
-        });
-
-        joyButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                feelingList.addFeeling(new Feeling("Joy"));
-            }
-        });
-
-        surpriseButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                feelingList.addFeeling(new Feeling("Surprise"));
-            }
-        });
-
-        angerButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                feelingList.addFeeling(new Feeling("Anger"));
-            }
-        });
-
-        sadnessButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                feelingList.addFeeling(new Feeling("Sadness"));
-            }
-        });
-
-        fearButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                feelingList.addFeeling(new Feeling("Fear"));
-            }
-        });
-
-        /*
-         * Code taken from StackOverflow users "Gilad Haimov" and "Dominik"
-         * https://stackoverflow.com/users/605111/gilad-haimov
-         * https://stackoverflow.com/users/4443105/dominik
-         *
-         * Comment code was taken from:
-         * https://stackoverflow.com/a/24610673
-         */
-        viewCountsButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // startActivity(new Intent(MainActivity.this, ViewCountsActivity.class));
-            }
-        });
-
-        /*
-         * Code taken from StackOverflow users "Gilad Haimov" and "Dominik"
-         * https://stackoverflow.com/users/605111/gilad-haimov
-         * https://stackoverflow.com/users/4443105/dominik
-         *
-         * Comment code was taken from:
-         * https://stackoverflow.com/a/24610673
-         */
-        viewHistoryButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // startActivity(new Intent(MainActivity.this, ViewHistoryActivity.class));
-            }
-        });
-
-
+        /* Set all the listeners for the buttons we just created */
+        loveButton.setOnClickListener(ocl);
+        joyButton.setOnClickListener(ocl);
+        surpriseButton.setOnClickListener(ocl);
+        angerButton.setOnClickListener(ocl);
+        sadnessButton.setOnClickListener(ocl);
+        fearButton.setOnClickListener(ocl);
+        viewCountsButton.setOnClickListener(ocl);
+        viewHistoryButton.setOnClickListener(ocl);
     }
 
+    /**
+     * Each button will use the same OnClickListener, which will perform a different operation
+     * based on the ID of the button
+     *
+     * Code taken from StackOverflow, from user "Nguyen Minh Binh"
+     *      https://stackoverflow.com/users/523325/nguyen-minh-binh
+     *      https://stackoverflow.com/a/9989541
+     */
+    private View.OnClickListener ocl = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            switch(v.getId()) {
+                case R.id.loveButton: feelingList.addFeeling(new Feeling("Love"));
+                    break;
+                case R.id.joyButton: feelingList.addFeeling(new Feeling("Joy"));
+                    break;
+                case R.id.surpriseButton: feelingList.addFeeling(new Feeling("Surprise"));
+                    break;
+                case R.id.angerButton: feelingList.addFeeling(new Feeling("Anger"));
+                    break;
+                case R.id.sadnessButton: feelingList.addFeeling(new Feeling("Sadness"));
+                    break;
+                case R.id.fearButton: feelingList.addFeeling(new Feeling("Fear"));
+                    break;
+                case R.id.viewHistoryButton: startActivity(new Intent(MainActivity.this, ViewHistoryActivity.class));
+                    break;
+                case R.id.viewCountsButton: startActivity(new Intent(MainActivity.this, ViewHistoryActivity.class));
+                    break;
+            }}};
 }

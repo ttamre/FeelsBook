@@ -42,6 +42,7 @@ public class FeelingList extends ArrayList{
      */
     public void addFeeling(Feeling feeling) {
         feelingList.add(feeling);
+        System.out.println("Added " + feeling.toString());
     }
 
 
