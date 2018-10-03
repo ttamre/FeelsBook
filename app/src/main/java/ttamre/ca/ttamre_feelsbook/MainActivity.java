@@ -1,18 +1,28 @@
 /**
- *  TODO Monday
- *      - All of ViewHistory
- *          1) Get recycler to update properly
- *          2) Add ability to tap to edit
- *          3) Add ability to swipe to delete
  *  TODO Tuesday
- *      - All of ViewCounts
- *      - Run any tests and fix any bugs that still exist
+ *      - ViewHistoryActivity
+ *          a) Viewing the list
+ *          b) Swipe to delete
+ *          c) Tap to edit
+ *      - ViewCountsActivity
+ *          a) Viewing the list
  *
  *  TODO Wednesday
+ *      - Allow users to immediately add a comment after creating an emotion
+ *      - Make sure comments are only 100 characters long
  *      - Update UML, README, and any other docs
+ *      - Add extra documentation (storyboard, UML sequence diagram)
  *      - Test build on lab machines
+ *      - Add any missing code documentation
+ *      - Code cleanup, inspection, refactoring
+ *
+ *  TODO Thursday
  *      - Record video of the app running (read spec before recording)
- *      - Submit assignment (read spec and forums before recording)
+ *      - Create a separate branch to add saving/loading and date editing
+ *
+ *  TODO Friday
+ *      - Submit assignment (re-read spec and forums first)
+ *
  *
  *  NOTE
  *      - Date will be converted to iso8601 when it is about to be rendered, not when instantiated
@@ -22,11 +32,13 @@
 
 package ttamre.ca.ttamre_feelsbook;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
     public static final FeelingList feelingList = new FeelingList();
@@ -64,22 +76,45 @@ public class MainActivity extends AppCompatActivity {
      * Code taken from StackOverflow, from user "Nguyen Minh Binh"
      *      https://stackoverflow.com/users/523325/nguyen-minh-binh
      *      https://stackoverflow.com/a/9989541
+     *
+     * Code for displaying a Toast taken from the android developer guide
+     *      https://developer.android.com/guide/topics/ui/notifiers/toasts
      */
     private View.OnClickListener ocl = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
+            Context context = getApplicationContext();
+
             switch(v.getId()) {
-                case R.id.loveButton: feelingList.addFeeling(new Feeling("Love"));
+                case R.id.loveButton:
+                    feelingList.addFeeling(new Feeling("Love"));
+                    Toast.makeText(context, "Recorded Love", Toast.LENGTH_SHORT).show();
+                    startActivity(new Intent(MainActivity.this, EditEmotionActivity.class));
                     break;
-                case R.id.joyButton: feelingList.addFeeling(new Feeling("Joy"));
+                case R.id.joyButton:
+                    feelingList.addFeeling(new Feeling("Joy"));
+                    Toast.makeText(context, "Recorded Joy", Toast.LENGTH_SHORT).show();
+                    startActivity(new Intent(MainActivity.this, EditEmotionActivity.class));
                     break;
-                case R.id.surpriseButton: feelingList.addFeeling(new Feeling("Surprise"));
+                case R.id.surpriseButton:
+                    feelingList.addFeeling(new Feeling("Surprise"));
+                    Toast.makeText(context, "Recorded Surprise", Toast.LENGTH_SHORT).show();
+                    startActivity(new Intent(MainActivity.this, EditEmotionActivity.class));
                     break;
-                case R.id.angerButton: feelingList.addFeeling(new Feeling("Anger"));
+                case R.id.angerButton:
+                    feelingList.addFeeling(new Feeling("Anger"));
+                    Toast.makeText(context, "Recorded Anger", Toast.LENGTH_SHORT).show();
+                    startActivity(new Intent(MainActivity.this, EditEmotionActivity.class));
                     break;
-                case R.id.sadnessButton: feelingList.addFeeling(new Feeling("Sadness"));
+                case R.id.sadnessButton:
+                    feelingList.addFeeling(new Feeling("Sadness"));
+                    Toast.makeText(context, "Recorded Sadness", Toast.LENGTH_SHORT).show();
+                    startActivity(new Intent(MainActivity.this, EditEmotionActivity.class));
                     break;
-                case R.id.fearButton: feelingList.addFeeling(new Feeling("Fear"));
+                case R.id.fearButton:
+                    feelingList.addFeeling(new Feeling("Fear"));
+                    Toast.makeText(context, "Recorded Fear", Toast.LENGTH_SHORT).show();
+                    startActivity(new Intent(MainActivity.this, EditEmotionActivity.class));
                     break;
                 case R.id.viewHistoryButton: startActivity(new Intent(MainActivity.this, ViewHistoryActivity.class));
                     break;

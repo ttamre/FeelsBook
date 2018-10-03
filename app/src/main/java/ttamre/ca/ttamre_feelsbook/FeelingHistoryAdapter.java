@@ -10,10 +10,13 @@
 
 package ttamre.ca.ttamre_feelsbook;
 
+import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 import android.widget.TextView;
+
 
 public class FeelingHistoryAdapter extends RecyclerView.Adapter<FeelingHistoryAdapter.FeelingListViewHolder> {
     private FeelingList feelingList;
@@ -26,7 +29,7 @@ public class FeelingHistoryAdapter extends RecyclerView.Adapter<FeelingHistoryAd
         public TextView textView;
         public FeelingListViewHolder(TextView v) {
             super(v);
-            textView = v;
+            textView = v.findViewById(R.id.viewHistoryRecycler);
         }
     }
 
@@ -37,12 +40,17 @@ public class FeelingHistoryAdapter extends RecyclerView.Adapter<FeelingHistoryAd
 
     // Create new views (invoked by the layout manager)
     @Override
-    public FeelingListViewHolder onCreateViewHolder(ViewGroup parent,
-                                                    int viewType) {
+    public FeelingListViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         // create a new view
-        TextView v = (TextView) LayoutInflater.from(parent.getContext()).inflate(R.layout.activity_view_history, parent, false);
-        String info = v.findViewById(R.id.viewHistoryRecycler).toString();
-        return new FeelingListViewHolder(v);
+
+        Log.d("tagged-ttamre", "FeelingHistoryAdapter.java -> onCreateViewHolder(): Entered function");
+
+        LayoutInflater inflater = LayoutInflater.from(parent.getContext());
+        TextView textView = (TextView) inflater.inflate(android.R.layout.activity_list_item, parent, false);
+
+        Log.d("tagged-ttamre", "FeelingHistoryAdapter.java -> onCreateViewHolder(): Returning a FeelingListViewHolder");
+
+        return new FeelingListViewHolder(textView);
     }
 
     // Replace the contents of a view (invoked by the layout manager)
@@ -50,8 +58,11 @@ public class FeelingHistoryAdapter extends RecyclerView.Adapter<FeelingHistoryAd
     public void onBindViewHolder(FeelingListViewHolder holder, int position) {
         // - get element from your dataset at this position
         // - replace the contents of the view with that element
-        holder.textView.setText(feelingList.getFeeling(position).toString());
-
+        System.out.println("Holder: " + holder.toString());
+        Log.d("tagged-ttamre", "FeelingHistoryAdapter.java -> onBindViewHolder(): Attempting to set item in RecyclerView: " + feelingList.getFeeling(position).toString());
+        String feelingText = feelingList.getFeeling(position).toString();
+        holder.textView.setText(feelingText);
+        Log.d("tagged-ttamre", "FeelingHistoryAdapter.java -> onBindViewHolder(): Successfully set item in RecyclerView: " + feelingList.getFeeling(position).toString());
     }
 
     // Return the size of your dataset (invoked by the layout manager)

@@ -10,4 +10,7 @@
     <string name="Anger">Anger</string>
     <string name="Fear">Fear</string>
     <string name="Sadness">Sadness</string>
+    <string name="EnterCommentHere">Enter comment here</string>
+    <string name="Submit">Submit</string>
+    <string name="EditEmotion">Edit Emotion</string>
 </resources>

@@ -28,9 +28,10 @@ public class FeelingList extends ArrayList{
      */
     public Feeling getFeeling(int index) {
         try {
+            Log.d("tagged-ttamre","FeelingList.java -> getFeeling(): Successfully retrieved " + feelingList.get(index) + " feelingList");
             return feelingList.get(index);
         } catch (IndexOutOfBoundsException e) {
-            Log.d("IndexOutOfBounds", "", e);
+            Log.e("tagged-ttamre", "FeelingList.java -> getFeeling(): Index out of bounds", e);
             return getFeeling(0);
         }
     }
@@ -42,7 +43,7 @@ public class FeelingList extends ArrayList{
      */
     public void addFeeling(Feeling feeling) {
         feelingList.add(feeling);
-        System.out.println("Added " + feeling.toString());
+        Log.d("tagged-ttamre", "FeelingList.java -> addFeeling(): Successfully added " + feeling.toString());
     }
 
 
@@ -54,8 +55,9 @@ public class FeelingList extends ArrayList{
     public void editFeeling(Feeling feeling, String newComment) {
         try {
             feeling.setComment(newComment);
+            Log.d("tagged-ttamre","FeelingList.java -> editFeeling(): Successfully edited feelingList comment");
         } catch(Resources.NotFoundException e) {
-            Log.d("NotFound","FeelingList.java -> editFeeling(): Feeling not in FeelingList", e);
+            Log.e("tagged-ttamre","FeelingList.java -> editFeeling(): Feeling not in FeelingList", e);
         }
     }
 
@@ -67,8 +69,9 @@ public class FeelingList extends ArrayList{
     public void editFeeling(Feeling feeling, Date newDate) {
         try {
             feeling.setDate(newDate);
+            Log.d("tagged-ttamre","FeelingList.java -> editFeeling(): Successfully edited feelingList date");
         } catch (Resources.NotFoundException e) {
-            Log.d("NotFound", "FeelingList.java -> editFeeling(): Feeling not in FeelingList", e);
+            Log.e("tagged-ttamre", "FeelingList.java -> editFeeling(): Feeling not in FeelingList", e);
         }
     }
 
@@ -79,8 +82,9 @@ public class FeelingList extends ArrayList{
     public void removeFeeling(Feeling feeling) {
         try {
             feelingList.remove(feeling);
+            Log.d("tagged-ttamre","FeelingList.java -> removeFeeling(): Successfully removed " + feeling + " from feelingList");
         } catch (Resources.NotFoundException e) {
-            Log.d("NotFound", "FeelingList.java -> removeFeeling(): Feeling not in FeelingList", e);
+            Log.e("tagged-ttamre", "FeelingList.java -> removeFeeling(): Feeling not in FeelingList", e);
         }
     }
 
@@ -118,6 +122,7 @@ public class FeelingList extends ArrayList{
             }
         }
 
+        Log.d("tagged-ttamre","FeelingList.java -> getFeelingList(): Successfully retrieved counts: " + counts.toString());
         return counts;
     }
 

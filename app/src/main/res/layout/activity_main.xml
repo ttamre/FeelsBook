@@ -29,7 +29,7 @@
         app:layout_constraintTop_toBottomOf="@+id/surpriseButton" />
 
     <TextView
-        android:id="@+id/titleTextView"
+        android:id="@+id/mainActivityTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="32dp"
@@ -45,7 +45,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/footerTextViewMain"
+        android:id="@+id/mainActivityFooter"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
@@ -98,7 +98,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="64dp"
         android:text="@string/ViewCounts"
-        app:layout_constraintBottom_toTopOf="@+id/footerTextViewMain"
+        app:layout_constraintBottom_toTopOf="@+id/mainActivityFooter"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/sadnessButton" />
 
@@ -111,7 +111,7 @@
         android:layout_marginTop="32dp"
         android:text="@string/Love"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/titleTextView" />
+        app:layout_constraintTop_toBottomOf="@+id/mainActivityTitle" />
 
     <Button
         android:id="@+id/joyButton"
