@@ -19,7 +19,6 @@
         </activity>
         <activity android:name=".ViewHistoryActivity" />
         <activity android:name=".EditEmotionActivity" />
-        <activity android:name=".ViewHistoryActivity2"></activity>
     </application>
 
 </manifest>
