@@ -1,23 +1,21 @@
 /**
  *  TODO Tuesday
  *      - ViewHistoryActivity
- *          b) Swipe to delete
- *          c) Tap to edit
- *      - ViewCountsActivity
- *          a) Viewing the list
+ *          - Swipe to delete
  *
  *  TODO Wednesday
- *      - Allow users to immediately add a comment after creating an emotion
- *      - Make sure comments are only 100 characters long
- *      - Update UML, README, and any other docs
- *      - Add extra documentation (storyboard, UML sequence diagram)
+ *      - Update documentation
+ *          a) README (all citations)
+ *          b) Code comments (every non-obvious function and any confusing statements)
+ *          c) Update UML
+ *          d) Add UML sequence diagram
+ *          e) Add application storyboard
  *      - Test build on lab machines
- *      - Add any missing code documentation
  *      - Code cleanup, inspection, refactoring
  *
  *  TODO Thursday
  *      - Record video of the app running (read spec before recording)
- *      - Create a separate branch to add saving/loading and date editing
+ *      - Create a separate branch to add persistence and date editing
  *
  *  TODO Friday
  *      - Submit assignment (re-read spec and forums first)
@@ -165,7 +163,7 @@ public class MainActivity extends AppCompatActivity {
                     break;
                 case R.id.viewHistoryButton: startActivity(new Intent(MainActivity.this, ViewHistoryActivity.class));
                     break;
-                case R.id.viewCountsButton: startActivity(new Intent(MainActivity.this, ViewHistoryActivity.class));
+                case R.id.viewCountsButton: startActivity(new Intent(MainActivity.this, ViewCountsActivity.class));
                     break;
             }}};
 }

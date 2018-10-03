@@ -1,24 +1,13 @@
-/**
- * Title: Add RecyclerView to your layout
- * Author: Android
- * Date published: September 25, 2018
- * Date accessed: October 1, 2018
- * Link: https://developer.android.com/guide/topics/ui/layout/recyclerview
- *
- * Copyright Android, Tem Tamre
- */
-
 package ttamre.ca.ttamre_feelsbook;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
-
 
 import java.util.ArrayList;
 
@@ -31,7 +20,7 @@ public class ViewHistoryActivity extends AppCompatActivity {
 
         ListView listView = findViewById(R.id.viewHistoryListView);
         ArrayList<Feeling> list = MainActivity.feelingList.getFeelingList();
-        ArrayAdapter<Feeling> feelingAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, list);
+        final ArrayAdapter<Feeling> feelingAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, list);
         listView.setAdapter(feelingAdapter);
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -42,8 +31,17 @@ public class ViewHistoryActivity extends AppCompatActivity {
                 Feeling targetFeeling = MainActivity.feelingList.searchFeelingList(feelingString);
                 int index = MainActivity.feelingList.getIndex(targetFeeling);
 
+                /*
+                 * Code for adding an extra parameter to an intent taken from StackOverflow, from user "DavGin"
+                 *      https://stackoverflow.com/users/460426/davgin
+                 *      https://stackoverflow.com/a/3913735
+                 *
+                 * Code for starting an activity for a result taken from StackOverflow, from user "Sudarshan Bhat"
+                 *      https://stackoverflow.com/users/1866009/dennis
+                 *      https://stackoverflow.com/q/13643940
+                 */
                 intent.putExtra("Index", index);
-                startActivity(intent);
+                startActivityForResult(intent, 0);
             }
         });
     }

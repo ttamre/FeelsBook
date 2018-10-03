@@ -154,6 +154,19 @@ public class FeelingList extends ArrayList{
         return targetFeeling;
     }
 
+    /**
+     * Gets the amount of unique feeling types in the feelingList (max 6)
+     * @return
+     */
+    public int uniqueSize() {
+        ArrayList<String> feelingTypes = new ArrayList<>();
+
+        for (Feeling feeling: feelingList) {
+            if (!feelingTypes.contains(feeling.getName())) { feelingTypes.add(feeling.getName()); }
+        }
+
+        return feelingTypes.size();
+    }
 
     /**
      * Override of the arrayList.size() method
@@ -162,7 +175,6 @@ public class FeelingList extends ArrayList{
     public int size() {
         return feelingList.size();
     }
-
 
     /**
      * Override of the arrayList.contains() method

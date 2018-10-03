@@ -2,20 +2,12 @@ package ttamre.ca.ttamre_feelsbook;
 
 import android.content.Context;
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
-import android.widget.CalendarView;
-import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Toast;
-
-import org.w3c.dom.Text;
-
-import java.util.Calendar;
-import java.util.Date;
 
 public class EditEmotionActivity extends AppCompatActivity {
 
@@ -45,6 +37,16 @@ public class EditEmotionActivity extends AppCompatActivity {
                 EditText inputText = findViewById(R.id.editEmotionInput);
                 String newComment = inputText.getText().toString();
                 MainActivity.feelingList.editFeeling(feeling, newComment);
+
+                /*
+                 * Code for updating the dataset from another activity taken from StackOverflow, from user "Sudarshan Bhat"
+                 *      https://stackoverflow.com/users/1866009/dennis
+                 *      https://stackoverflow.com/q/13643940
+                 */
+                Intent intent = new Intent();
+                intent.putExtra("updatedComment", newComment);
+                setResult(RESULT_OK, intent);
+                finish();
 
                 Toast.makeText(context, "Comment edited", Toast.LENGTH_SHORT).show();
                 }});

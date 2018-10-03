@@ -9,6 +9,7 @@ public class Feeling {
     protected String name;
     protected Date date;
     protected String comment;
+    protected final int MAX_LENGTH = 100;  // maximum length for a comment
 
     /**
      * Constructor for the Feeling class
@@ -35,8 +36,12 @@ public class Feeling {
      */
     public Feeling(String feelingName, String newComment) {
         name = feelingName;
-        comment = newComment;
         date = Calendar.getInstance().getTime();
+
+        if (newComment.length() > 100) {
+            newComment = newComment.substring(0, MAX_LENGTH);
+        }
+        comment = newComment;
     }
 
     /**
@@ -68,6 +73,9 @@ public class Feeling {
      * @param newComment the new comment that will replace the existing one
      */
     public void setComment(String newComment) {
+        if (newComment.length() > 100) {
+            newComment = newComment.substring(0, MAX_LENGTH);
+        }
         comment = newComment;
     }
 
