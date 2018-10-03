@@ -1,3 +1,22 @@
+/**
+ *   The Feeling class, representative of the feelings that the application allows users to record
+ *
+ *     Copyright (C) 2018 Tem Tamre
+ *
+ *     This program is free software: you can redistribute it and/or modify
+ *     it under the terms of the GNU General Public License as published by
+ *     the Free Software Foundation, either version 3 of the License, or
+ *     (at your option) any later version.
+ *
+ *     This program is distributed in the hope that it will be useful,
+ *     but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *     GNU General Public License for more details.
+ *
+ *     You should have received a copy of the GNU General Public License
+ *     along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
 package ttamre.ca.ttamre_feelsbook;
 
 import java.text.SimpleDateFormat;
@@ -38,6 +57,7 @@ public class Feeling {
         name = feelingName;
         date = Calendar.getInstance().getTime();
 
+        /* Trim comments to the allowed size if they are longer than MAX_LENGTH */
         if (newComment.length() > 100) {
             newComment = newComment.substring(0, MAX_LENGTH);
         }
@@ -73,6 +93,7 @@ public class Feeling {
      * @param newComment the new comment that will replace the existing one
      */
     public void setComment(String newComment) {
+        /* Trim comments to the allowed size if they are longer than MAX_LENGTH */
         if (newComment.length() > 100) {
             newComment = newComment.substring(0, MAX_LENGTH);
         }
@@ -89,7 +110,10 @@ public class Feeling {
     }
 
     public String toString() {
+        /* Convert Date objects to iso8601 formatted SimpleDateFormat objects */
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss", Locale.CANADA);
+
+        /* Ignore printing the comment if comment is null */
         if (comment != null) {
             return String.format("%s: %s (%s)", sdf.format(date), name, comment);
         } else {

@@ -1,31 +1,31 @@
 /**
- *  TODO Tuesday
- *      - ViewHistoryActivity
- *          - Swipe to delete
+ *   The launcher activity for the ttamre-FeelsBook android application
  *
- *  TODO Wednesday
- *      - Update documentation
- *          a) README (all citations)
- *          b) Code comments (every non-obvious function and any confusing statements)
- *          c) Update UML
- *          d) Add UML sequence diagram
- *          e) Add application storyboard
- *      - Test build on lab machines
- *      - Code cleanup, inspection, refactoring
+ *     Copyright (C) 2018 Tem Tamre
  *
- *  TODO Thursday
- *      - Record video of the app running (read spec before recording)
- *      - Create a separate branch to add persistence and date editing
+ *     This program is free software: you can redistribute it and/or modify
+ *     it under the terms of the GNU General Public License as published by
+ *     the Free Software Foundation, either version 3 of the License, or
+ *     (at your option) any later version.
  *
- *  TODO Friday
- *      - Submit assignment (re-read spec and forums first)
+ *     This program is distributed in the hope that it will be useful,
+ *     but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *     GNU General Public License for more details.
  *
+ *     You should have received a copy of the GNU General Public License
+ *     along with this program.  If not, see <http://www.gnu.org/licenses/>.
  *
- *  NOTE
- *      - Date will be converted to iso8601 when it is about to be rendered, not when instantiated
- *          * this allows for date methods to be used (comparisons, etc) *
+ *     TODO Wednesday
+ *          - Test on lab machines
+ *          - Update UML (add activities)
+ *          - ViewHistoryActivity (delete)
+ *
+ *     TODO Thursday
+ *          - Add persistence and date editing
+ *          - Record video (re-read entire spec and forums beforehand)
+ *          - Submit assignment
  */
-
 
 package ttamre.ca.ttamre_feelsbook;
 

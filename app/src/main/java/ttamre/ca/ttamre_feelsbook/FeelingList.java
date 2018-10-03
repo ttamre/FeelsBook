@@ -1,3 +1,22 @@
+/**
+ *   The FeelingList clss that allows Feeling objects to be grouped and operated on together
+ *
+ *     Copyright (C) 2018 Tem Tamre
+ *
+ *     This program is free software: you can redistribute it and/or modify
+ *     it under the terms of the GNU General Public License as published by
+ *     the Free Software Foundation, either version 3 of the License, or
+ *     (at your option) any later version.
+ *
+ *     This program is distributed in the hope that it will be useful,
+ *     but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *     GNU General Public License for more details.
+ *
+ *     You should have received a copy of the GNU General Public License
+ *     along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
 package ttamre.ca.ttamre_feelsbook;
 
 import android.content.res.Resources;
@@ -156,7 +175,7 @@ public class FeelingList extends ArrayList{
 
     /**
      * Gets the amount of unique feeling types in the feelingList (max 6)
-     * @return
+     * @return the number of types of feelings in the feelingList
      */
     public int uniqueSize() {
         ArrayList<String> feelingTypes = new ArrayList<>();
