@@ -1,4 +1,5 @@
 # ttamre-Feelsbook
+* Go through each java file and add the citations present to this file *
 
 ## References
 #### Feeling.java

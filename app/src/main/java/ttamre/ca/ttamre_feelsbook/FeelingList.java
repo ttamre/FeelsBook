@@ -36,6 +36,25 @@ public class FeelingList extends ArrayList{
         }
     }
 
+    /**
+     * Return the index of a feeling in the feelingList if it exists
+     * @param feeling the feeling to search for
+     * @return the index of that feeling (-1 on NotFoundException)
+     */
+    public int getIndex(Feeling feeling) {
+        int index;
+
+        try {
+            index = feelingList.indexOf(feeling);
+            Log.d("tagged-ttamre","FeelingList.java -> getIndex(): Successfully retrieved index: " + feeling + " at " + index);
+        } catch (Resources.NotFoundException e) {
+            Log.e("tagged-ttamre", "FeelingList.java -> getIndex(): Feeling not in FeelingList", e);
+            index = -1;
+        }
+
+        return index;
+    }
+
 
     /**
      * Adds a feeling to the feelingList
@@ -124,6 +143,15 @@ public class FeelingList extends ArrayList{
 
         Log.d("tagged-ttamre","FeelingList.java -> getFeelingList(): Successfully retrieved counts: " + counts.toString());
         return counts;
+    }
+
+    public Feeling searchFeelingList(String targetString) {
+        Feeling targetFeeling = null;
+        for (Feeling feeling: feelingList) {
+            if (feeling.toString().equals(targetString)) { targetFeeling = feeling; }
+        }
+
+        return targetFeeling;
     }
 
 

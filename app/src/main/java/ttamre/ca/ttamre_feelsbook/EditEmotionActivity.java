@@ -37,7 +37,8 @@ public class EditEmotionActivity extends AppCompatActivity {
                 Context context = getApplicationContext();
 
                 /* Get the feeling */
-                int index = MainActivity.feelingList.size() - 1;
+                Bundle bundle = getIntent().getExtras();
+                int index = bundle.getInt("Index");
                 Feeling feeling = MainActivity.feelingList.getFeeling(index);
 
                 /* Set that feeling's comment to the comment that the user inputted */

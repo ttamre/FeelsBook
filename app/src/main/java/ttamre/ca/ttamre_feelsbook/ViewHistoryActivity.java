@@ -10,10 +10,17 @@
 
 package ttamre.ca.ttamre_feelsbook;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
+import android.widget.TextView;
+
+
+import java.util.ArrayList;
 
 public class ViewHistoryActivity extends AppCompatActivity {
 
@@ -21,18 +28,23 @@ public class ViewHistoryActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_history);
-        RecyclerView recyclerView = findViewById(R.id.viewHistoryRecycler);
 
-        // Since the layout won't change size based on the amount of items in view, we can set the
-        // size to be fixed, which should improve performance
-        recyclerView.setHasFixedSize(true);
+        ListView listView = findViewById(R.id.viewHistoryListView);
+        ArrayList<Feeling> list = MainActivity.feelingList.getFeelingList();
+        ArrayAdapter<Feeling> feelingAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, list);
+        listView.setAdapter(feelingAdapter);
 
-        // Create a recyclerManager and attach it to the recyclerView
-        RecyclerView.LayoutManager recyclerManager = new LinearLayoutManager(this);
-        recyclerView.setLayoutManager(recyclerManager);
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent intent = new Intent(ViewHistoryActivity.this, EditEmotionActivity.class);
+                String feelingString = ((TextView) view).getText().toString();
+                Feeling targetFeeling = MainActivity.feelingList.searchFeelingList(feelingString);
+                int index = MainActivity.feelingList.getIndex(targetFeeling);
 
-        // Create a recyclerAdapter and attach it to the recyclerView
-        RecyclerView.Adapter recyclerAdapter = new FeelingHistoryAdapter(MainActivity.feelingList);
-        recyclerView.setAdapter(recyclerAdapter);
+                intent.putExtra("Index", index);
+                startActivity(intent);
+            }
+        });
     }
 }

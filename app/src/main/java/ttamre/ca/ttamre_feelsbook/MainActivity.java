@@ -1,7 +1,6 @@
 /**
  *  TODO Tuesday
  *      - ViewHistoryActivity
- *          a) Viewing the list
  *          b) Swipe to delete
  *          c) Tap to edit
  *      - ViewCountsActivity
@@ -79,42 +78,90 @@ public class MainActivity extends AppCompatActivity {
      *
      * Code for displaying a Toast taken from the android developer guide
      *      https://developer.android.com/guide/topics/ui/notifiers/toasts
+     *
+     * Code for adding an extra parameter to an intent taken from StackOverflow, from user "DavGin"
+     *      https://stackoverflow.com/users/460426/davgin
+     *      https://stackoverflow.com/a/3913735
      */
     private View.OnClickListener ocl = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
             Context context = getApplicationContext();
+            Feeling feeling;
+            Intent intent;
 
             switch(v.getId()) {
                 case R.id.loveButton:
-                    feelingList.addFeeling(new Feeling("Love"));
+                    /* Create a feeling and add it to the feelingList */
+                    feeling = new Feeling("Love");
+                    feelingList.addFeeling(feeling);
                     Toast.makeText(context, "Recorded Love", Toast.LENGTH_SHORT).show();
-                    startActivity(new Intent(MainActivity.this, EditEmotionActivity.class));
+
+                    /* Create a new intent, give it the index of the feeling to be edited, then start it */
+                    intent = new Intent(MainActivity.this, EditEmotionActivity.class);
+                    intent.putExtra("Index", feelingList.getIndex(feeling));
+                    startActivity(intent);
+
                     break;
                 case R.id.joyButton:
-                    feelingList.addFeeling(new Feeling("Joy"));
+                    /* Create a feeling and add it to the feelingList */
+                    feeling = new Feeling("Joy");
+                    feelingList.addFeeling(feeling);
                     Toast.makeText(context, "Recorded Joy", Toast.LENGTH_SHORT).show();
-                    startActivity(new Intent(MainActivity.this, EditEmotionActivity.class));
+
+                    /* Create a new intent, give it the index of the feeling to be edited, then start it */
+                    intent = new Intent(MainActivity.this, EditEmotionActivity.class);
+                    intent.putExtra("Index", feelingList.getIndex(feeling));
+                    startActivity(intent);
+
                     break;
                 case R.id.surpriseButton:
-                    feelingList.addFeeling(new Feeling("Surprise"));
+                    /* Create a feeling and add it to the feelingList */
+                    feeling = new Feeling("Surprise");
+                    feelingList.addFeeling(feeling);
                     Toast.makeText(context, "Recorded Surprise", Toast.LENGTH_SHORT).show();
-                    startActivity(new Intent(MainActivity.this, EditEmotionActivity.class));
+
+                    /* Create a new intent, give it the index of the feeling to be edited, then start it */
+                    intent = new Intent(MainActivity.this, EditEmotionActivity.class);
+                    intent.putExtra("Index", feelingList.getIndex(feeling));
+                    startActivity(intent);
+
                     break;
                 case R.id.angerButton:
-                    feelingList.addFeeling(new Feeling("Anger"));
+                    /* Create a feeling and add it to the feelingList */
+                    feeling = new Feeling("Anger");
+                    feelingList.addFeeling(feeling);
                     Toast.makeText(context, "Recorded Anger", Toast.LENGTH_SHORT).show();
-                    startActivity(new Intent(MainActivity.this, EditEmotionActivity.class));
+
+                    /* Create a new intent, give it the index of the feeling to be edited, then start it */
+                    intent = new Intent(MainActivity.this, EditEmotionActivity.class);
+                    intent.putExtra("Index", feelingList.getIndex(feeling));
+                    startActivity(intent);
+
                     break;
                 case R.id.sadnessButton:
-                    feelingList.addFeeling(new Feeling("Sadness"));
+                    /* Create a feeling and add it to the feelingList */
+                    feeling = new Feeling("Sadness");
+                    feelingList.addFeeling(feeling);
                     Toast.makeText(context, "Recorded Sadness", Toast.LENGTH_SHORT).show();
-                    startActivity(new Intent(MainActivity.this, EditEmotionActivity.class));
+
+                    /* Create a new intent, give it the index of the feeling to be edited, then start it */
+                    intent = new Intent(MainActivity.this, EditEmotionActivity.class);
+                    intent.putExtra("Index", feelingList.getIndex(feeling));
+                    startActivity(intent);
+
                     break;
                 case R.id.fearButton:
-                    feelingList.addFeeling(new Feeling("Fear"));
+                    /* Create a feeling and add it to the feelingList */
+                    feeling = new Feeling("Fear");
+                    feelingList.addFeeling(feeling);
                     Toast.makeText(context, "Recorded Fear", Toast.LENGTH_SHORT).show();
-                    startActivity(new Intent(MainActivity.this, EditEmotionActivity.class));
+
+                    /* Create a new intent, give it the index of the feeling to be edited, then start it */
+                    intent = new Intent(MainActivity.this, EditEmotionActivity.class);
+                    intent.putExtra("Index", feelingList.getIndex(feeling));
+                    startActivity(intent);
+
                     break;
                 case R.id.viewHistoryButton: startActivity(new Intent(MainActivity.this, ViewHistoryActivity.class));
                     break;
