@@ -25,6 +25,7 @@ import android.content.res.Resources;
 import android.util.Log;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
@@ -40,7 +41,6 @@ public class FeelingList extends ArrayList implements Serializable {
     public FeelingList() {
        feelingList = new ArrayList<>();
     }
-
 
     /**
      * Returns the feeling at a given index
@@ -64,7 +64,6 @@ public class FeelingList extends ArrayList implements Serializable {
      */
     public int getIndex(Feeling feeling) {
         int index;
-
         try {
             index = feelingList.indexOf(feeling);
             Log.d("tagged-ttamre","FeelingList.java -> getIndex(): Successfully retrieved index: " + feeling + " at " + index);
@@ -122,7 +121,7 @@ public class FeelingList extends ArrayList implements Serializable {
     public void removeFeeling(Feeling feeling) {
         try {
             feelingList.remove(feeling);
-            Log.d("tagged-ttamre","FeelingList.java -> removeFeeling(): Successfully removed " + feeling + " from feelingList");
+            Log.d("tagged-ttamre", "FeelingList.java -> removeFeeling(): Successfully removed " + feeling + " from feelingList");
         } catch (Resources.NotFoundException e) {
             Log.e("tagged-ttamre", "FeelingList.java -> removeFeeling(): Feeling not in FeelingList", e);
         }
@@ -147,7 +146,7 @@ public class FeelingList extends ArrayList implements Serializable {
      *      https://javaconceptoftheday.com/author/pramodbablad/
      *      https://javaconceptoftheday.com/count-occurrences-of-each-element-in-an-array/
      *
-     * @return Occurrence count of the format {feelingName: String, count: Integer}
+     * @return Occurrence count of the format {feelingName:String, count:Integer}
      */
     public Map<String, Integer> getFeelingCount() {
         Map<String, Integer> counts = new HashMap<>();
@@ -171,7 +170,6 @@ public class FeelingList extends ArrayList implements Serializable {
         for (Feeling feeling: feelingList) {
             if (feeling.toString().equals(targetString)) { targetFeeling = feeling; }
         }
-
         return targetFeeling;
     }
 

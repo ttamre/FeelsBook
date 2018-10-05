@@ -17,6 +17,7 @@
 
 package ttamre.ca.ttamre_feelsbook;
 
+import android.content.Context;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -25,6 +26,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import java.util.Calendar;
+import java.util.Date;
 
 public class EditTimeActivity extends AppCompatActivity {
 
@@ -46,6 +48,8 @@ public class EditTimeActivity extends AppCompatActivity {
     private View.OnClickListener editTimeListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
+            Bundle bundle = getIntent().getExtras();
+            Context context = getApplicationContext();
 
             /* Regex string from https://stackoverflow.com/a/25873711 */
             String regex = "(?:[01]\\d|2[0123]):(?:[012345]\\d):(?:[012345]\\d)";
@@ -53,20 +57,36 @@ public class EditTimeActivity extends AppCompatActivity {
             EditText inputText = findViewById(R.id.editTimeInput);
             String timeString = inputText.getText().toString();
 
+            int index = bundle.getInt("Index");
+            int year = bundle.getInt("Year");
+            int month = bundle.getInt("Month");
+            int date = bundle.getInt("Date");
+            int time[] = new int[3];
+
 
             /* The user's input will be used if it is valid */
             if (timeString.matches(regex)) {
-                EditEmotionActivity.time[0] = Integer.parseInt(timeString.substring(0, 2));
-                EditEmotionActivity.time[1] = Integer.parseInt(timeString.substring(3, 5));
-                EditEmotionActivity.time[2] = Integer.parseInt(timeString.substring(6, 8));
+                time[0] = Integer.parseInt(timeString.substring(0, 2));
+                time[1] = Integer.parseInt(timeString.substring(3, 5));
+                time[2] = Integer.parseInt(timeString.substring(6, 8));
             } else {
                 /* These values will be used if the user attempts an invalid input */
                 Calendar now = Calendar.getInstance();
-                EditEmotionActivity.time[0] = now.get(Calendar.HOUR_OF_DAY);
-                EditEmotionActivity.time[1] = now.get(Calendar.MINUTE);
-                EditEmotionActivity.time[2] = now.get(Calendar.SECOND);
+                time[0] = now.get(Calendar.HOUR_OF_DAY);
+                time[1] = now.get(Calendar.MINUTE);
+                time[2] = now.get(Calendar.SECOND);
                 Toast.makeText(getApplicationContext(), "Invalid input, using current time instead", Toast.LENGTH_SHORT).show();
             }
+
+            /* Set that feeling's date to the date that the user inputted */
+            /* The -1900 is because the year parameter adds 1900 to the passed int */
+            Date newDate = new Date(year - 1900, month, date, time[0], time[1], time[2]);
+            Feeling feeling = MainActivity.feelingList.getFeeling(index);
+            MainActivity.feelingList.editFeeling(feeling, newDate);
+
+            /* Save the change and let the user know */
+            MainActivity.saver.save(MainActivity.feelingList);
+            Toast.makeText(context, "Date edited", Toast.LENGTH_SHORT).show();
             finish();
         }
     };

@@ -20,13 +20,15 @@
 
 package ttamre.ca.ttamre_feelsbook;
 
+import android.support.annotation.NonNull;
+
 import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
 
-public class Feeling implements Serializable {
+public class Feeling implements Serializable, Comparable<Feeling>{
     protected String name;
     protected Date date;
     protected String comment;
@@ -124,5 +126,21 @@ public class Feeling implements Serializable {
         } else {
             return String.format("%s: %s", sdf.format(date), name);
         }
+    }
+
+    @Override
+    public int compareTo(Feeling otherFeeling) {
+        if (this.date != null && otherFeeling.date != null) {
+            return otherFeeling.getName().compareTo(this.name);
+        }
+        return 0;
+    }
+
+    public boolean equals(Feeling otherFeeling) {
+        return this.date.equals(otherFeeling.date);
+    }
+
+    public int hashCode() {
+        return this.name.hashCode();
     }
 }

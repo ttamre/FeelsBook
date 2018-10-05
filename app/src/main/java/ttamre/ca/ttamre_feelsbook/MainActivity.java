@@ -21,8 +21,7 @@
  *
  *
  *  TODO
- *      - Time editing
- *      - Device testing
+ *      - Lab machine test
  *      - Record video
  *      - Upload APK
  *      - Submit (re-read specs and entire forum)

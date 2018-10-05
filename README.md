@@ -4,7 +4,7 @@
 ## References
 ---
 
-* Abram Hindle, CMPUT 301: Saga of StudentPicker (playlist, videos 1-7)
+Abram Hindle, CMPUT 301: Saga of StudentPicker (playlist, videos 1-7)
 https://www.youtube.com/playlist?list=PL240uJOh_Vb4PtMZ0f7N8ACYkCLv0673O
 Published 2014-09-11, accessed 2018-09-12
 

@@ -122,24 +122,18 @@ public class EditEmotionActivity extends AppCompatActivity {
      */
     private CalendarView.OnDateChangeListener editEmotionDateListener = new CalendarView.OnDateChangeListener() {
         public void onSelectedDayChange(CalendarView view, int year, int month, int date) {
-            Context context = getApplicationContext();
 
-            /* Get the feeling that was added as an extra parameter */
+            /* Get the feeling that was added as an extra parameter and pass it along, along with
+             * the year/month/date values that we got from the CalendarView, since it will all be
+             * applied in the EditTimeActivity class s*/
             Bundle bundle = getIntent().getExtras();
-            int index = bundle.getInt("Index");
-            Feeling feeling = MainActivity.feelingList.getFeeling(index);
+            Intent intent = new Intent(EditEmotionActivity.this, EditTimeActivity.class);
+            intent.putExtra("Index", bundle.getInt("Index"));
+            intent.putExtra("Year", year);
+            intent.putExtra("Month", month);
+            intent.putExtra("Date", date);
 
-            /* Start EditTimeActivity so we can get the new time as well */
-            startActivity(new Intent(EditEmotionActivity.this, EditTimeActivity.class));
-
-            /* Set that feeling's date to the date that the user inputted */
-            /* The -1900 is because the year parameter adds 1900 to the passed int */
-            Date newDate = new Date(year - 1900, month, date, time[0], time[1], time[2]);
-            MainActivity.feelingList.editFeeling(feeling, newDate);
-
-            /* Save the change and let the user know */
-            MainActivity.saver.save(MainActivity.feelingList);
-            Toast.makeText(context, "Date edited", Toast.LENGTH_SHORT).show();
+            startActivityForResult(intent, 0);
             finish();
         }
     };
