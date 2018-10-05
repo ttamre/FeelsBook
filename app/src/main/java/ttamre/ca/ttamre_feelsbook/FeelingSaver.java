@@ -51,7 +51,6 @@ public class FeelingSaver {
         } catch (Exception e) {
             Log.d("tagged-ttamre", "FeelingSaver.java -> save(): ERROR - " + e.toString());
         }
-
     }
 
     public FeelingList load() {

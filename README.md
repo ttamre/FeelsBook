@@ -43,6 +43,15 @@ Published 2010-10-12, accessed 2018-10-02
 
 
 Sudarshan Bhat, Response to StackOverflow question "Refresh ListView after updating in another activity"
-https://stackoverflow.com/q/13643940
-https://stackoverflow.com/users/1866009/dennis
-Published 2012-11-30, accessed 2018-02-2018
+https://stackoverflow.com/a/13644570
+https://stackoverflow.com/users/991198/sudarshan-bhat
+Published 2012-11-30, accessed 2018-10-02
+
+Deron Eriksson, Code Strategies, AVAJAVA Web Tutorials: How do I write an object to a file and read it back?
+http://www.avajava.com/tutorials/lessons/how-do-i-write-an-object-to-a-file-and-read-it-back.html
+Published 2010-01-02, accessed 2018-10-05
+
+CommonsWare, Response to StackOverflow question "Android Studio open failed: EROFS (Read-only file system) when creating a File"
+https://stackoverflow.com/a/30411821
+https://stackoverflow.com/users/115145/commonsware
+Published 2015-05-23, accessed 2018-10-05
