@@ -30,8 +30,6 @@ import android.widget.CalendarView;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import java.util.Date;
-
 public class EditEmotionActivity extends AppCompatActivity {
     public static int time[] = new int[3];
 

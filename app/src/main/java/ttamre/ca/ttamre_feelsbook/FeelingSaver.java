@@ -18,7 +18,6 @@
 package ttamre.ca.ttamre_feelsbook;
 
 import android.content.Context;
-import android.util.Log;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -47,9 +46,7 @@ public class FeelingSaver {
             ObjectOutputStream oos = new ObjectOutputStream(fos);
             oos.writeObject(feelingList);
             oos.close();
-            Log.d("tagged-ttamre", "FeelingSaver.java -> save(): SUCCESS - Saved to " + file.getAbsolutePath());
         } catch (Exception e) {
-            Log.d("tagged-ttamre", "FeelingSaver.java -> save(): ERROR - " + e.toString());
         }
     }
 
@@ -61,10 +58,8 @@ public class FeelingSaver {
             ObjectInputStream ois = new ObjectInputStream(fis);
             object = (FeelingList) ois.readObject();
             ois.close();
-            Log.d("tagged-ttamre", "FeelingSaver.java -> load(): SUCCESS - Load from " + file.getAbsolutePath());
 
         } catch (Exception e) {
-            Log.d("tagged-ttamre", "FeelingSaver.java -> load(): ERROR - " + e.toString());
         }
 
         return object;

@@ -20,15 +20,13 @@
 
 package ttamre.ca.ttamre_feelsbook;
 
-import android.support.annotation.NonNull;
-
 import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
 
-public class Feeling implements Serializable, Comparable<Feeling>{
+public class Feeling implements Serializable {
     protected String name;
     protected Date date;
     protected String comment;
@@ -38,9 +36,9 @@ public class Feeling implements Serializable, Comparable<Feeling>{
 
     /**
      * Constructor for the Feeling class
-     *
+     * <p>
      * The code for setting the date in iso8601 was taken from Mincong Huang's blog
-     *      https://mincong-h.github.io/2017/02/16/convert-date-to-string-in-java/
+     * https://mincong-h.github.io/2017/02/16/convert-date-to-string-in-java/
      *
      * @param feelingName name or category of the feeling
      */
@@ -51,13 +49,13 @@ public class Feeling implements Serializable, Comparable<Feeling>{
 
     /**
      * Constructor for the Feeling class
-     *
+     * <p>
      * the code for setting the date was taken from StackOverflow, from user JeffJack
-     *      https://stackoverflow.com/users/149923/jeffjak
-     *      https://stackoverflow.com/a/20333576
+     * https://stackoverflow.com/users/149923/jeffjak
+     * https://stackoverflow.com/a/20333576
      *
      * @param feelingName name or category of the feeling
-     * @param newComment the comment to be added to the feeling
+     * @param newComment  the comment to be added to the feeling
      */
     public Feeling(String feelingName, String newComment) {
         name = feelingName;
@@ -72,6 +70,7 @@ public class Feeling implements Serializable, Comparable<Feeling>{
 
     /**
      * Getter method to return the name or classification of the feeling
+     *
      * @return name: String
      */
     public String getName() {
@@ -80,6 +79,7 @@ public class Feeling implements Serializable, Comparable<Feeling>{
 
     /**
      * Getter method to return the date (in iso8601) that the class was instantiated on
+     *
      * @return date: String
      */
     public Date getDate() {
@@ -88,6 +88,7 @@ public class Feeling implements Serializable, Comparable<Feeling>{
 
     /**
      * Getter method to return the comment for the feelings
+     *
      * @return comment: String
      */
     public String getComment() {
@@ -96,6 +97,7 @@ public class Feeling implements Serializable, Comparable<Feeling>{
 
     /**
      * Setter method to edit the comment of an existing feeling
+     *
      * @param newComment the new comment that will replace the existing one
      */
     public void setComment(String newComment) {
@@ -109,6 +111,7 @@ public class Feeling implements Serializable, Comparable<Feeling>{
 
     /**
      * Setter method to edit the date of an existing date
+     *
      * @param newDate the new date that will replace the existing one
      */
     public void setDate(Date newDate) {
@@ -126,21 +129,5 @@ public class Feeling implements Serializable, Comparable<Feeling>{
         } else {
             return String.format("%s: %s", sdf.format(date), name);
         }
-    }
-
-    @Override
-    public int compareTo(Feeling otherFeeling) {
-        if (this.date != null && otherFeeling.date != null) {
-            return otherFeeling.getName().compareTo(this.name);
-        }
-        return 0;
-    }
-
-    public boolean equals(Feeling otherFeeling) {
-        return this.date.equals(otherFeeling.date);
-    }
-
-    public int hashCode() {
-        return this.name.hashCode();
     }
 }
