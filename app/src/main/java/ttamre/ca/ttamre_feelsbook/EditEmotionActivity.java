@@ -1,26 +1,26 @@
-/**
- *   Allows users to edit emotions within the application
+/*
+ * The activity for ttamre-FeelsBook that allows users to edit their feelings.
+ *  Allows for date and comment editing, as well as deletion of the feeling.
  *
- *     Copyright (C) 2018 Tem Tamre
+ *  Copyright (C) 2018 Tem Tamre
  *
- *     This program is free software: you can redistribute it and/or modify
- *     it under the terms of the GNU General Public License as published by
- *     the Free Software Foundation, either version 3 of the License, or
- *     (at your option) any later version.
+ *  This program is free software: you can redistribute it and/or modify
+ *  it under the terms of the GNU General Public License as published by
+ *  the Free Software Foundation, either version 3 of the License, or
+ *  (at your option) any later version.
  *
- *     This program is distributed in the hope that it will be useful,
- *     but WITHOUT ANY WARRANTY; without even the implied warranty of
- *     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *     GNU General Public License for more details.
+ *  This program is distributed in the hope that it will be useful,
+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *  GNU General Public License for more details.
  *
- *     You should have received a copy of the GNU General Public License
- *     along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ *  You should have received a copy of the GNU General Public License
+ *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
 package ttamre.ca.ttamre_feelsbook;
 
 import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -30,76 +30,106 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import java.util.Date;
-import java.util.GregorianCalendar;
 
 public class EditEmotionActivity extends AppCompatActivity {
 
+    /**
+     * Override of android's onCreate method
+     *
+     * Upon creation, we'll create objects to reference the buttons and calendar that appear
+     * on screen, then we'll set their listeners
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_emotion);
 
-        /* Create our Button and CalendarView objects */
-        Button editEmotionButton = findViewById(R.id.editEmotionButton);
+        /* Create our Buttons and Calendar, and set their listeners */
+        Button editEmotoinSubmit = findViewById(R.id.editEmotionSubmit);
+        Button editEmotionDelete = findViewById(R.id.editEmotionDelete);
+        CalendarView editEmotionCalendar = findViewById(R.id.editEmotionCalendar);
 
-        /* Set their listeners
-         * Code for displaying a Toast taken from the android developer guide
-         *      https://developer.android.com/guide/topics/ui/notifiers/toasts
-         */
-        editEmotionButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Context context = getApplicationContext();
-
-                /* Get the feeling that was added as an extra parameter */
-                Bundle bundle = getIntent().getExtras();
-                int index = bundle.getInt("Index");
-                Feeling feeling = MainActivity.feelingList.getFeeling(index);
-
-                /* Set that feeling's comment to the comment that the user inputted */
-                EditText inputText = findViewById(R.id.editEmotionInput);
-                String newComment = inputText.getText().toString();
-                MainActivity.feelingList.editFeeling(feeling, newComment);
-
-                /*
-                 * Code for updating the dataset from another activity taken from StackOverflow, from user "Sudarshan Bhat"
-                 *      https://stackoverflow.com/users/1866009/dennis
-                 *      https://stackoverflow.com/q/13643940
-                 */
-                Intent intent = new Intent();
-                intent.putExtra("updatedComment", newComment);
-                setResult(RESULT_OK, intent);
-                finish();
-
-                Toast.makeText(context, "Comment edited", Toast.LENGTH_SHORT).show();
-            }});
-
-        CalendarView v = findViewById(R.id.editEmotionCalendar);
-        v.setOnDateChangeListener( new CalendarView.OnDateChangeListener() {
-            public void onSelectedDayChange(CalendarView view, int year, int month, int date) {
-                Context context = getApplicationContext();
-
-                /* Get the feeling that was added as an extra parameter */
-                Bundle bundle = getIntent().getExtras();
-                int index = bundle.getInt("Index");
-                Feeling feeling = MainActivity.feelingList.getFeeling(index);
-
-                /* Set that feeling's date to the date that the user inputted */
-                Date newDate = new Date(year-1900, month, date);
-                MainActivity.feelingList.editFeeling(feeling, newDate);
-
-                /*
-                 * Code for updating the dataset from another activity taken from StackOverflow, from user "Sudarshan Bhat"
-                 *      https://stackoverflow.com/users/1866009/dennis
-                 *      https://stackoverflow.com/q/13643940
-                 */
-                Intent intent = new Intent();
-                intent.putExtra("updatedComment", newDate);
-                setResult(RESULT_OK, intent);
-                finish();
-
-                Toast.makeText(context, "Date edited", Toast.LENGTH_SHORT).show();
-            }
-        });
+        editEmotoinSubmit.setOnClickListener(editEmotionListener);
+        editEmotionDelete.setOnClickListener(editEmotionListener);
+        editEmotionCalendar.setOnDateChangeListener(editEmotionDateListener);
     }
+
+    /**
+     * Each button will use the same OnClickListener, which will perform a different operation
+     * based on the ID of the button
+     *
+     * Code taken from StackOverflow, from user "Nguyen Minh Binh"
+     *      https://stackoverflow.com/users/523325/nguyen-minh-binh
+     *      https://stackoverflow.com/a/9989541
+     *
+     * Code for displaying a Toast taken from the android developer guide
+     *      https://developer.android.com/guide/topics/ui/notifiers/toasts
+     *
+     * Code for adding an extra parameter to an intent taken from StackOverflow, from user "DavGin"
+     *      https://stackoverflow.com/users/460426/davgin
+     *      https://stackoverflow.com/a/3913735
+     */
+    private View.OnClickListener editEmotionListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            Context context = getApplicationContext();
+            Feeling feeling;
+
+            /* Get the feeling that was added as an extra parameter */
+            Bundle bundle = getIntent().getExtras();
+            int index = bundle.getInt("Index");
+            feeling = MainActivity.feelingList.getFeeling(index);
+
+            switch (v.getId()) {
+                case R.id.editEmotionSubmit:
+                    /* Set that feeling's comment to the comment that the user inputted */
+                    EditText inputText = findViewById(R.id.editEmotionInput);
+                    String newComment = inputText.getText().toString();
+                    MainActivity.feelingList.editFeeling(feeling, newComment);
+
+
+                    Toast.makeText(context, "Comment edited", Toast.LENGTH_SHORT).show();
+                    break;
+
+                case R.id.editEmotionDelete:
+                    MainActivity.feelingList.removeFeeling(feeling);
+
+                    /* Save the change and let the user know */
+                    MainActivity.saver.save(MainActivity.feelingList);
+                    Toast.makeText(context, "Emotion deleted", Toast.LENGTH_SHORT).show();
+                    break;
+            }
+            MainActivity.saver.save(MainActivity.feelingList);
+            finish();
+        }
+    };
+
+
+    /**
+     * Creating the calendar's OnDateChangeListener object
+     *
+     * Code for displaying a Toast taken from the android developer guide
+     *      https://developer.android.com/guide/topics/ui/notifiers/toasts
+     */
+    private CalendarView.OnDateChangeListener editEmotionDateListener = new CalendarView.OnDateChangeListener() {
+        public void onSelectedDayChange(CalendarView view, int year, int month, int date) {
+            Context context = getApplicationContext();
+
+            /* Get the feeling that was added as an extra parameter */
+            Bundle bundle = getIntent().getExtras();
+            int index = bundle.getInt("Index");
+            Feeling feeling = MainActivity.feelingList.getFeeling(index);
+
+            /* Set that feeling's date to the date that the user inputted */
+            /* The -1900 is because the year parameter adds 1900 to the passed int */
+            Date newDate = new Date(year - 1900, month, date);
+            MainActivity.feelingList.editFeeling(feeling, newDate);
+
+            /* Save the change and let the user know */
+            MainActivity.saver.save(MainActivity.feelingList);
+            Toast.makeText(context, "Date edited", Toast.LENGTH_SHORT).show();
+            finish();
+        }
+    };
 }

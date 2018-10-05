@@ -3,6 +3,11 @@
 
 ## References
 ---
+
+* Abram Hindle, CMPUT 301: Saga of StudentPicker (playlist, videos 1-7)
+https://www.youtube.com/playlist?list=PL240uJOh_Vb4PtMZ0f7N8ACYkCLv0673O
+Published 2014-09-11, accessed 2018-09-12
+
 Mincong Huang, Convert Date to ISO8601 String in Java
 https://mincong-h.github.io/2017/02/16/convert-date-to-string-in-java/
 Published 2017-02-17, accessed 2018-10-01

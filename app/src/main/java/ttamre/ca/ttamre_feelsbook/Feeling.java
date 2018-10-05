@@ -1,33 +1,37 @@
-/**
- *   The Feeling class, representative of the feelings that the application allows users to record
+/*
+ * The Feeling class, which is the representation of the feelings that users will be able to record
+ *  and edit within the application.
  *
- *     Copyright (C) 2018 Tem Tamre
+ *  Copyright (C) 2018 Tem Tamre
  *
- *     This program is free software: you can redistribute it and/or modify
- *     it under the terms of the GNU General Public License as published by
- *     the Free Software Foundation, either version 3 of the License, or
- *     (at your option) any later version.
+ *  This program is free software: you can redistribute it and/or modify
+ *  it under the terms of the GNU General Public License as published by
+ *  the Free Software Foundation, either version 3 of the License, or
+ *  (at your option) any later version.
  *
- *     This program is distributed in the hope that it will be useful,
- *     but WITHOUT ANY WARRANTY; without even the implied warranty of
- *     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *     GNU General Public License for more details.
+ *  This program is distributed in the hope that it will be useful,
+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *  GNU General Public License for more details.
  *
- *     You should have received a copy of the GNU General Public License
- *     along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ *  You should have received a copy of the GNU General Public License
+ *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
 package ttamre.ca.ttamre_feelsbook;
 
+import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
 
-public class Feeling {
+public class Feeling implements Serializable {
     protected String name;
     protected Date date;
     protected String comment;
+
+    private static final long serialVersionUID = -2040889557165779518L;
     protected final int MAX_LENGTH = 100;  // maximum length for a comment
 
     /**

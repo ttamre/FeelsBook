@@ -1,20 +1,21 @@
-/**
- *   Displays each feeling that is stored in the application
+/*
+ * The activity for ttamre-FeelsBook that allows users to view their feeling history and
+ *  edit comments, dates, as well as deleting feelings.
  *
- *     Copyright (C) 2018 Tem Tamre
+ *  Copyright (C) 2018 Tem Tamre
  *
- *     This program is free software: you can redistribute it and/or modify
- *     it under the terms of the GNU General Public License as published by
- *     the Free Software Foundation, either version 3 of the License, or
- *     (at your option) any later version.
+ *  This program is free software: you can redistribute it and/or modify
+ *  it under the terms of the GNU General Public License as published by
+ *  the Free Software Foundation, either version 3 of the License, or
+ *  (at your option) any later version.
  *
- *     This program is distributed in the hope that it will be useful,
- *     but WITHOUT ANY WARRANTY; without even the implied warranty of
- *     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *     GNU General Public License for more details.
+ *  This program is distributed in the hope that it will be useful,
+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *  GNU General Public License for more details.
  *
- *     You should have received a copy of the GNU General Public License
- *     along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ *  You should have received a copy of the GNU General Public License
+ *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
 package ttamre.ca.ttamre_feelsbook;
@@ -31,7 +32,9 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 public class ViewHistoryActivity extends AppCompatActivity {
+    ArrayAdapter<Feeling> feelingAdapter;
 
+    /* Declaring this here so the EditEmotionActivity class can access it */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,7 +43,8 @@ public class ViewHistoryActivity extends AppCompatActivity {
         /* Get the feelingList, prepare it, then display */
         ListView listView = findViewById(R.id.viewHistoryListView);
         ArrayList<Feeling> list = MainActivity.feelingList.getFeelingList();
-        final ArrayAdapter<Feeling> feelingAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, list);
+        feelingAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, list);
+
         listView.setAdapter(feelingAdapter);
 
         /* Executes when a list item is pressed */
@@ -68,5 +72,14 @@ public class ViewHistoryActivity extends AppCompatActivity {
                 startActivityForResult(intent, 0);
             }
         });
+    }
+
+    /**
+     * Makes sure to update the adapter whenever the activity is resumed
+     */
+    @Override
+    protected void onResume() {
+        super.onResume();
+        feelingAdapter.notifyDataSetChanged();
     }
 }

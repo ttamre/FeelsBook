@@ -1,35 +1,37 @@
-/**
- *   The FeelingList clss that allows Feeling objects to be grouped and operated on together
+/*
+ * The FeelingList class that will contain all the feelings that the user will record, as well as
+ *  invoke all the Feeling options that the users will use.
  *
- *     Copyright (C) 2018 Tem Tamre
+ *  Copyright (C) 2018 Tem Tamre
  *
- *     This program is free software: you can redistribute it and/or modify
- *     it under the terms of the GNU General Public License as published by
- *     the Free Software Foundation, either version 3 of the License, or
- *     (at your option) any later version.
+ *  This program is free software: you can redistribute it and/or modify
+ *  it under the terms of the GNU General Public License as published by
+ *  the Free Software Foundation, either version 3 of the License, or
+ *  (at your option) any later version.
  *
- *     This program is distributed in the hope that it will be useful,
- *     but WITHOUT ANY WARRANTY; without even the implied warranty of
- *     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *     GNU General Public License for more details.
+ *  This program is distributed in the hope that it will be useful,
+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *  GNU General Public License for more details.
  *
- *     You should have received a copy of the GNU General Public License
- *     along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ *  You should have received a copy of the GNU General Public License
+ *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
+
 
 package ttamre.ca.ttamre_feelsbook;
 
 import android.content.res.Resources;
 import android.util.Log;
-
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
-public class FeelingList extends ArrayList{
-
-    protected ArrayList<Feeling> feelingList;
+public class FeelingList extends ArrayList implements Serializable {
+    private static final long serialVersionUID = -2016486597245718641L;
+    private ArrayList<Feeling> feelingList;
 
     /**
      * Constructor method for the FeelingList class

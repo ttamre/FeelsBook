@@ -15,4 +15,5 @@
     <string name="EditEmotion">Edit Emotion</string>
     <string name="EnterTime">Enter Time</string>
     <string name="EnterDate">Enter Date</string>
+    <string name="DeleteEmotion">Delete Emotion</string>
 </resources>
