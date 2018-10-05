@@ -124,7 +124,7 @@ public class Feeling implements Serializable {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss", Locale.CANADA);
 
         /* Ignore printing the comment if comment is null */
-        if (comment != null) {
+        if (comment != null || comment.equals("")) {
             return String.format("%s: %s (%s)", sdf.format(date), name, comment);
         } else {
             return String.format("%s: %s", sdf.format(date), name);
