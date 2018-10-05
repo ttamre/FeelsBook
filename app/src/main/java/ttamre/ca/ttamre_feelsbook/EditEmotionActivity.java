@@ -21,6 +21,7 @@
 package ttamre.ca.ttamre_feelsbook;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -32,6 +33,7 @@ import android.widget.Toast;
 import java.util.Date;
 
 public class EditEmotionActivity extends AppCompatActivity {
+    public static int time[] = new int[3];
 
     /**
      * Override of android's onCreate method
@@ -42,17 +44,23 @@ public class EditEmotionActivity extends AppCompatActivity {
      */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        System.out.println("onCreate EditEmotionActivity");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_emotion);
 
         /* Create our Buttons and Calendar, and set their listeners */
-        Button editEmotoinSubmit = findViewById(R.id.editEmotionSubmit);
+        Button editEmotionSubmit = findViewById(R.id.editEmotionSubmit);
         Button editEmotionDelete = findViewById(R.id.editEmotionDelete);
         CalendarView editEmotionCalendar = findViewById(R.id.editEmotionCalendar);
 
-        editEmotoinSubmit.setOnClickListener(editEmotionListener);
+        editEmotionSubmit.setOnClickListener(editEmotionListener);
         editEmotionDelete.setOnClickListener(editEmotionListener);
         editEmotionCalendar.setOnDateChangeListener(editEmotionDateListener);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
     }
 
     /**
@@ -121,9 +129,12 @@ public class EditEmotionActivity extends AppCompatActivity {
             int index = bundle.getInt("Index");
             Feeling feeling = MainActivity.feelingList.getFeeling(index);
 
+            /* Start EditTimeActivity so we can get the new time as well */
+            startActivity(new Intent(EditEmotionActivity.this, EditTimeActivity.class));
+
             /* Set that feeling's date to the date that the user inputted */
             /* The -1900 is because the year parameter adds 1900 to the passed int */
-            Date newDate = new Date(year - 1900, month, date);
+            Date newDate = new Date(year - 1900, month, date, time[0], time[1], time[2]);
             MainActivity.feelingList.editFeeling(feeling, newDate);
 
             /* Save the change and let the user know */

@@ -19,7 +19,8 @@
         </activity>
         <activity android:name=".ViewHistoryActivity" />
         <activity android:name=".EditEmotionActivity" />
-        <activity android:name=".ViewCountsActivity"/>
+        <activity android:name=".ViewCountsActivity" />
+        <activity android:name=".EditTimeActivity"></activity>
     </application>
 
 </manifest>

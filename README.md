@@ -55,3 +55,8 @@ CommonsWare, Response to StackOverflow question "Android Studio open failed: ERO
 https://stackoverflow.com/a/30411821
 https://stackoverflow.com/users/115145/commonsware
 Published 2015-05-23, accessed 2018-10-05
+
+Avinash Raj, Response to StackOverflow question "Regex pattern for EXACTLY HH:MM:SS time string"
+https://stackoverflow.com/a/25873711
+https://stackoverflow.com/users/3297613/avinash-raj
+Published 2014-09-16, accessed 2010-10-05

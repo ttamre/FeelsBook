@@ -113,6 +113,7 @@ public class Feeling implements Serializable {
         date = newDate;
     }
 
+
     public String toString() {
         /* Convert Date objects to iso8601 formatted SimpleDateFormat objects */
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss", Locale.CANADA);

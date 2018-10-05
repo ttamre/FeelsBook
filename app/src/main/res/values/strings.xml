@@ -16,4 +16,6 @@
     <string name="EnterTime">Enter Time</string>
     <string name="EnterDate">Enter Date</string>
     <string name="DeleteEmotion">Delete Emotion</string>
+    <string name="EditTime">Edit Time</string>
+    <string name="HHMMSS">HH:MM:SS</string>
 </resources>

@@ -20,13 +20,11 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  *
  *
- *  TODO Thursday
+ *  TODO
  *      - Time editing
- *      - UML update (Add activities)
- *
- *  TODO Friday
  *      - Device testing
  *      - Record video
+ *      - Upload APK
  *      - Submit (re-read specs and entire forum)
  */
 
