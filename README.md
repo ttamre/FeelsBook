@@ -1,4 +1,7 @@
-# ttamre-Feelsbook
+# Feelsbook
+An Android application that allows users to track their moods throughout the day.
+
+This application was developed for a course assignment in **CMPUT301** (Introduction to Software Engineering) at the University of Alberta (instructed by Dr. Abram Hindle)
 
 
 ## References
